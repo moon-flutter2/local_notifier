@@ -83,7 +83,7 @@ class LocalNotifier {
     ShortcutPolicy shortcutPolicy = ShortcutPolicy.requireCreate,
   }) async {
     final Map<String, dynamic> arguments = {
-      'appName': appName,
+      'display_name': appName,
       'shortcutPolicy': shortcutPolicy.name,
     };
     if (Platform.isWindows) {
@@ -105,7 +105,7 @@ class LocalNotifier {
     _notifications[notification.identifier] = notification;
 
     final Map<String, dynamic> arguments = notification.toJson();
-    arguments['appName'] = _appName;
+    arguments['display_name'] = _appName;
     await _channel.invokeMethod('notify', arguments);
   }
 
